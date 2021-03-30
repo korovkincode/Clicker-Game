@@ -1,3 +1,3 @@
-# Clicker-Game
-Clicker-Game
+# Game
+Game
 30.03.21 - Start
