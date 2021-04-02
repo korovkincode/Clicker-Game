@@ -16,8 +16,8 @@ class Player:
 		self.direction = 0
 
 # set up the background and the player
-player_img = [pygame.image.load("player.png"), pygame.image.load("mirrored_player.png")]
-background_img = pygame.image.load("background.jpg")
+player_img = [pygame.image.load("static/player.png"), pygame.image.load("static/mirrored_player.png")]
+background_img = pygame.image.load("static/background.jpg")
 
 # set up the player movement
 player = Player(x = 0, y = 230)
