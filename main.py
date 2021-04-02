@@ -26,7 +26,7 @@ PINK = (230, 50, 230)
 # example of player
 coord_x, coord_y = 620, 360
 pygame.draw.circle(screen, YELLOW, (coord_x, coord_y), 50)
-direction = 0
+direction = 3
 
 # running the game until the user didn't quit
 running = True
@@ -39,21 +39,14 @@ while running:
 			running = False
 
 	keys_pressed = pygame.key.get_pressed()
+	pygame.draw.circle(screen, WHITE, (coord_x, coord_y), 50)
 	# move	
 	if keys_pressed[pygame.K_d]:
 		print('Key D pressed')
-		if direction == -3:
-			direction = 0
-		else:
-			direction = 3
+		coord_x += direction
 	if keys_pressed[pygame.K_a]:
 		print('Key A pressed')
-		if direction == 3:
-			direction = 0
-		else:
-			direction = -3
-	pygame.draw.circle(screen, WHITE, (coord_x, coord_y), 50)
-	coord_x += direction
+		coord_x -= direction
 	pygame.draw.circle(screen, YELLOW, (coord_x, coord_y), 50)
 	# flip the display
 	pygame.display.flip()
