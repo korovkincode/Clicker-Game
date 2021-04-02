@@ -10,7 +10,7 @@ screen = pygame.display.set_mode(screen_resolution)
 running = True
 while running:
 
-    # did the user quit?
+    # checking, whether the user quit
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
