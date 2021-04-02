@@ -42,7 +42,7 @@ while running:
 	# move	
 	if keys_pressed[pygame.K_d]:
 		print('Key D pressed')
-		if direction :
+		if direction == -3:
 			direction = 0
 		else:
 			direction = 3
