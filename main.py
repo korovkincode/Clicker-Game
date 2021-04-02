@@ -11,7 +11,7 @@ screen.fill((255, 255, 255))
 
 # set FPS limit
 clock = pygame.time.Clock()
-fps = 60
+fps = 30
 
 # All default colors
 WHITE = (255, 255, 255)
@@ -24,18 +24,37 @@ PINK = (230, 50, 230)
 
 
 # example of player
-pygame.draw_circle(screen, YELLOW, (620, 360), 50)
-direction = 5
+coord_x, coord_y = 620, 360
+pygame.draw.circle(screen, YELLOW, (coord_x, coord_y), 50)
+direction = 0
 
 # running the game until the user didn't quit
 running = True
 while running:
-
-	# checking, whether the user quit
+	# handle every event
 	for event in pygame.event.get():
+
+		# checking, whether the user quit
 		if event.type == pygame.QUIT:
 			running = False
 
+	keys_pressed = pygame.key.get_pressed()
+	# move	
+	if keys_pressed[pygame.K_d]:
+		print('Key D pressed')
+		if direction :
+			direction = 0
+		else:
+			direction = 3
+	if keys_pressed[pygame.K_a]:
+		print('Key A pressed')
+		if direction == 3:
+			direction = 0
+		else:
+			direction = -3
+	pygame.draw.circle(screen, WHITE, (coord_x, coord_y), 50)
+	coord_x += direction
+	pygame.draw.circle(screen, YELLOW, (coord_x, coord_y), 50)
 	# flip the display
 	pygame.display.flip()
 
