@@ -1,6 +1,7 @@
 # set up the library
 import pygame
 pygame.init()
+pygame.display.set_caption("Platformer")
 
 # set up the drawing screen window
 screen_resolution = [626, 375]
