@@ -31,15 +31,16 @@ class Player:
 		self.jumptime = 0 # air time
 		self.isFalling = False
 		self.isJumping = False
+		self.jumpStrength = 6 # height, that player can reach for one clock tick
 
-ground = [Ground(0, 230, 626)]
+ground = [Ground(0, 220, 626)]
 
 # set up the background and the player
 player_img = [pygame.image.load("static/Pixel_Art.png"), pygame.image.load("static/mirrored_player.png")]
 background_img = pygame.image.load("static/background.jpg")
 
 # set up the player movement
-player = Player(x = 0, y = 230)
+player = Player(x = 0, y = 220)
 
 # running the game until the user didn't quit
 running = True
@@ -64,10 +65,13 @@ while running:
 
 	# if player in jump
 	if player.isJumping:
-		if player.jumptime + 5 <= player.jumpH:
-			player.y -= 5
-			player.jumptime += 5
+		if player.jumptime + player.jumpStrength <= player.jumpH:
+			if player.jumpStrength == 6 and player.jumptime + 6 == player.jumpH:
+				player.jumpStrength = 0.75
+			player.y -= player.jumpStrength
+			player.jumptime += player.jumpStrength
 		else:
+			player.jumpStrength = 6
 			player.jumptime = 0
 			player.isJumping = False
 			player.isFalling = True
@@ -79,7 +83,7 @@ while running:
 			if gr.isTouch(player):
 				touched = True
 		if not touched:
-			player.y += 5
+			player.y += player.jumpStrength
 		else:
 			player.isFalling = False
 
