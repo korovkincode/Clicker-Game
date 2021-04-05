@@ -36,7 +36,7 @@ class Player:
 ground = [Ground(0, 220, 626)]
 
 # set up the background and the player
-player_img = [pygame.image.load("static/Pixel_Art.png"), pygame.image.load("static/mirrored_player.png")]
+player_img = [pygame.image.load("static/player.png"), pygame.image.load("static/mirrored_player.png")]
 background_img = pygame.image.load("static/background.jpg")
 
 # set up the player movement
