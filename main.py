@@ -1,5 +1,6 @@
 # set up the library
 import pygame
+
 pygame.init()
 pygame.display.set_caption("Platformer")
 
@@ -9,6 +10,7 @@ player_size = [25, 69]
 screen = pygame.display.set_mode(screen_resolution)
 clock = pygame.time.Clock()
 
+
 class Ground:
 	def __init__(self, x, y, width):
 		self.xstart = x
@@ -16,22 +18,24 @@ class Ground:
 		self.y = y
 
 	def isTouch(self, obj):
-		if obj.x >= self.xstart and obj.x <= self.xend and obj.y == self.y:
+		if self.xstart <= obj.x <= self.xend and obj.y == self.y:
 			return True
 		return False
 
+
 class Player:
-	def __init__(self, x, y, hp = 100, speed = 3.5):
-		self.x = x # X position
-		self.y = y # Y position
-		self.hp = hp # Health Points
-		self.speed = speed # Speed
-		self.direction = 0 # Direction(0 -> east, 1 -> west)
-		self.jumpH = 90 # player max jump height
-		self.jumptime = 0 # air time
+	def __init__(self, x, y, hp=100, speed=3.5):
+		self.x = x  # X position
+		self.y = y  # Y position
+		self.hp = hp  # Health Points
+		self.speed = speed  # Speed
+		self.direction = 0  # Direction(0 -> east, 1 -> west)
+		self.jumpH = 90  # player max jump height
+		self.jumptime = 0  # air time
 		self.isFalling = False
 		self.isJumping = False
-		self.jumpStrength = 6 # height, that player can reach for one clock tick
+		self.jumpStrength = 6  # height, that player can reach for one clock tick
+
 
 ground = [Ground(0, 220, 626)]
 
@@ -40,12 +44,12 @@ player_img = [pygame.image.load("static/player.png"), pygame.image.load("static/
 background_img = pygame.image.load("static/background.jpg")
 
 # set up the player movement
-player = Player(x = 0, y = 220)
+player = Player(x=0, y=220)
 
 # running the game until the user didn't quit
 running = True
 while running:
-	
+
 	# checking, whether the user quit
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -79,7 +83,7 @@ while running:
 	# if player is falling
 	if player.isFalling:
 		touched = False
-		for gr in ground: # if player touches ground -> he stops falling
+		for gr in ground:  # if player touches ground -> he stops falling
 			if gr.isTouch(player):
 				touched = True
 		if not touched:
