@@ -5,7 +5,7 @@ pygame.display.set_caption("Platformer")
 
 # set up the drawing screen window
 screen_resolution = [626, 375]
-player_size = [37, 57]
+player_size = [25, 69]
 screen = pygame.display.set_mode(screen_resolution)
 clock = pygame.time.Clock()
 
